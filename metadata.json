@@ -1,0 +1,19 @@
+{
+  "name": "9bryan-rocket_chat",
+  "version": "0.1.0",
+  "author": "9bryan",
+  "summary": "Install and configure rocket.chat",
+  "license": "Apache-2.0",
+  "source": "https://github.com/9bryan",
+  "project_page": "https://github.com/9bryan",
+  "issues_url": "https://github.com/9bryan/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.12.0"},
+    {"name":"puppet-archive","version_requirement":">= 0.5.1"},
+    {"name":"jfryman-selinux","version_requirement":">= 0.4.0"},
+    {"name":"stahnma-epel","version_requirement":">= 1.2.2"},
+    {"name":"puppetlabs-nodejs","version_requirement":">= 0.8.0"}
+  ],
+  "data_provider": null
+}
+
