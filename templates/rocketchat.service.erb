@@ -1,0 +1,12 @@
+  [Unit]
+  Description=The Rocket.Chat  server
+  After=network.target remote-fs.target nss-lookup.target nginx.target mongod.target
+  [Service]
+  ExecStart=/usr/local/bin/node <%= @install_location %>/main.js
+  StandardOutput=syslog
+  StandardError=syslog
+  SyslogIdentifier=rocketchat
+  User=root
+  Environment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=http://<%= @public_dns %>:<%= @port %>/ PORT=<%= @port %>
+  [Install]
+  WantedBy=multi-user.target
