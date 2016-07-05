@@ -52,13 +52,14 @@ class rocket_chat (
   $port             = '80',
 ){
   include archive
-  include epel
+  include nodejs
+  require epel
 
   class { 'selinux':
     mode => 'disabled',
   }
 
-  $packages = ['GraphicsMagick', 'nodejs', 'npm', 'mongodb-org-server', 'mongodb-org']
+  $packages = ['GraphicsMagick', 'mongodb-org-server', 'mongodb-org']
   $npm_packages = ['inherits', 'n']
 
   #Install system packages
@@ -111,9 +112,10 @@ class rocket_chat (
   }
 
   exec {'npm install':
-    command     => "npm install",
+    command     => "cd ${install_location}/programs/server && npm install",
     refreshonly => true,
-    path        => "${install_location}/programs/server",
+    path        => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/root/bin',
+
   }
 
   file {'/usr/lib/systemd/system/rocketchat.service':
